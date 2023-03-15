@@ -122,8 +122,7 @@ void mcpWriteRegister(uint8_t address, uint32_t tx_data, uint8_t tx_data_bytes){
    	transaction.flags = SPI_TRANS_USE_TXDATA | SPI_TRANS_USE_RXDATA;
    	transaction.length = (tx_data_bytes+1)*8;				// length is MAX(in_bits, out_bits)
 	transaction.rxlength = 8;								//Recieve status byte
-    transaction.tx_data[0] = cmd_byte;
-	*(uint32_t*)(transaction.tx_data) |= tx_data << 8;
+	*(uint32_t*)(transaction.tx_data) = tx_data << 8 | cmd_byte;
 
 	vTaskDelay(50/portTICK_PERIOD_MS);
 

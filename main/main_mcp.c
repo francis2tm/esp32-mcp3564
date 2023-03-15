@@ -68,7 +68,7 @@ void IRAM_ATTR acqAdcExtTask(){
 
             /* como a eletronica de momento não suporta resolucoes elevadas 
             * esta conversao simula um conversor AD de N bits (10 bits devem chegar para validar nesta fase) */
-            const uint8_t N_BITS = 10;
+            const uint8_t N_BITS = 12;
             int32_t sample_n_bits = (raw_data & 0x00FFFFFF) >> (24 - N_BITS); 	// descartar N bits
             float voltage = 0.0;
 
