@@ -41,10 +41,11 @@
 
 	//Commands
 	#define RREG 0b01
+	#define STATIC_READ ((MCP_ADDR << 6) | (0b0000 << 2) | (0b01))
 	#define WREG 0b10
-	#define RESET 0b111000
-	#define START 0b101000
-	#define FSHUTDOWN 0b110100				//Full Shutdown; the internal config registers keep the values
+	#define RESET ((0b00111000))
+	#define START 0b00101000
+	#define FSHUTDOWN ((0b00110100))				//Full Shutdown; the internal config registers keep the values
 
 	//Register Addresses
 	#define REG_ADCDATA 	0x00	//R
@@ -60,6 +61,7 @@
 	#define REG_GAINCAL 	0x0A	//R/W
 	#define REG_LOCK		0x0D	//R/W
 	#define REG_CRCCFG		0X0F	//R
+
 
 #endif
 

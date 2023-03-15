@@ -58,11 +58,12 @@ void IRAM_ATTR acqAdcExtTask(){
 
             //Convert scale from -Vref/2 <-> +Vref/2 to 0 <-> +Vref
             //adc_ext_samples[channel] = sample + 0x01000000;
+            
 
-            int8_t sign = (raw_data >> 24) & 0x01;      // bits [27:34] represent the sign (extended)
+            int8_t sign = (raw_data >> 24) & 0x01;      // bits [27:24] represent the sign (extended)
             int8_t channel = (raw_data >> 28) & 0x0F;   // 4 MSBs [31-28] represent the CH (SCAN MODE)
             int32_t sample = raw_data & 0x01FFFFFF;     // 
-            
+
             const int32_t VREF = 3.3;
 
             /* como a eletronica de momento não suporta resolucoes elevadas 
