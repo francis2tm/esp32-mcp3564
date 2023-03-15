@@ -159,7 +159,7 @@ uint32_t IRAM_ATTR mcpReadRegister(uint8_t address, uint8_t rx_data_bytes){
 
 	gpio_set_level(SPI3_CS0_IO, 0); // manually set CS\ active low -> begin comm
 	spi_device_polling_transmit(adc_ext_spi_handler, &cmd_transaction);  //Transmit command
-	spi_device_polling_transmit(adc_ext_spi_handler, &read_transaction);  //Receive data
+	spi_device_polling_transmit(adc_ext_spi_handler, &read_transaction);  //Receive data!
 	gpio_set_level(SPI3_CS0_IO, 1); // manually set CS\ idle
 
 
